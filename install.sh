@@ -83,7 +83,20 @@ sudo cp /home/pi/zeroPrIvacy/config_files/torrc  /etc/tor/torrc
 sudo cp /home/pi/zeroPrIvacy/config_files/interfaces /etc/network/interfaces
 sudo cp /home/pi/zeroPrIvacy/config_files/isc-dhcp-server /etc/default/isc-dhcp-server
 sudo cp /home/pi/zeroPrIvacy/config_files/sysctl.conf /etc/sysctl.conf
+echo "Is your wifi successfully connected to an access point?"
+read wifi
+if [[ $wifi == [nN]* ]];
+then
+clear
+echo "Okay, let's setup the wifi first."
+echo "What is the SSID for your access point?"
+read ssid
+echo "What is the PASSPHRASE for your access point?"
+read pass
+echo "One moment..."
 sudo cp /home/pi/zeroPrIvacy/config_files/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
+sudo sh -c "wpa_passphrase '$ssid' '$pass' | cat >> /etc/wpa_supplicant/wpa_supplicant.conf"
+fi
 #clear
 echo "
 ################################
