@@ -97,6 +97,12 @@ echo "One moment..."
 sudo cp /home/pi/zeroPrIvacy/config_files/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
 sudo sh -c "wpa_passphrase '$ssid' '$pass' | cat >> /etc/wpa_supplicant/wpa_supplicant.conf"
 fi
+echo "###############"
+echo "Enabling ssh..."
+echo "###############"
+update-rc.d ssh enable &&
+invoke-rc.d ssh start
+
 #clear
 echo "
 ################################
