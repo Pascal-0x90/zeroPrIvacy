@@ -6,6 +6,7 @@
 :POSTROUTING ACCEPT [3:106]
 -A PREROUTING -i usb0 -p udp -m udp --dport 53 -j REDIRECT --to-ports 53
 -A PREROUTING -i usb0 -p tcp -m tcp --dport 22 -j REDIRECT --to-ports 22
+-A PREROUTING -i usb0 -p tcp -m tcp --dport 80 -j REDIRECT --to-ports 80
 -A PREROUTING -i usb0 -p tcp -m tcp --tcp-flags FIN,SYN,RST,ACK SYN -j REDIRECT --to-ports 9040
 -A POSTROUTING -o wlan0 -j MASQUERADE
 COMMIT
