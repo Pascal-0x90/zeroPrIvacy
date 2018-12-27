@@ -75,11 +75,11 @@ sudo ./install.sh
 19) Follow the prompts as you go along. It will then reboot and blamo, it *should* work. 
 
 ## Resources
-https://github.com/billz/raspap-webgui#-raspap-webgui--
-https://github.com/wismna/HackPi
-https://redmine.lighttpd.net/projects/1/wiki/TutorialConfiguration
-https://twit.tv/shows/know-how/episodes/301
-http://www.isticktoit.net/?p=1383
-https://learn.adafruit.com/turning-your-raspberry-pi-zero-into-a-usb-gadget/ethernet-gadget
-http://www.linuxandubuntu.com/home/complete-setup-tutorial-for-lighttpd-a-lightweight-web-server
-https://askubuntu.com/questions/910402/how-to-allow-only-ssh-and-internet-access-with-iptables
+1) https://github.com/billz/raspap-webgui#-raspap-webgui--
+2) https://github.com/wismna/HackPi
+3) https://redmine.lighttpd.net/projects/1/wiki/TutorialConfiguration
+4) https://twit.tv/shows/know-how/episodes/301
+5) http://www.isticktoit.net/?p=1383
+6) https://learn.adafruit.com/turning-your-raspberry-pi-zero-into-a-usb-gadget/ethernet-gadget
+7) http://www.linuxandubuntu.com/home/complete-setup-tutorial-for-lighttpd-a-lightweight-web-server
+8) https://askubuntu.com/questions/910402/how-to-allow-only-ssh-and-internet-access-with-iptables
