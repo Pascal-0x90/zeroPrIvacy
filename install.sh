@@ -92,6 +92,8 @@ sudo cp /home/pi/zeroPrIvacy/config_files/interfaces /etc/network/interfaces
 sudo cp /home/pi/zeroPrIvacy/config_files/isc-dhcp-server /etc/default/isc-dhcp-server
 sudo cp /home/pi/zeroPrIvacy/config_files/sysctl.conf /etc/sysctl.conf
 sudo cp /home/pi/zeroPrIvacy/config_files/sudoers /etc/sudoers
+sudo cp /home/pi/zeroPrIvacy/config_files/configure_client.php /var/www/html/includes/configure_client.php
+sudo cp /home/pi/zeroPrIvacy/config_files/index.php /var/www/html/index.php
 sudo chmod 700 /etc/sudoers
 echo "Is your wifi successfully connected to an access point?"
 read wifi
