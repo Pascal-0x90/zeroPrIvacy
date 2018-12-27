@@ -12,7 +12,7 @@ echo "
 Remember, this could potentially mess any current configuration up
 and you may have to fix this on your own. It is recommended that you
 run this install script on a newly generated iso of raspbian. Otherwise,
-enjoy at your own risk. Some files will be backed up but not all so be 
+enjoy at your own risk. Some files will be backed up but not all so be
 cautious of what you need backed up. THIS WILL NOT RENDER THE PI UNUSABLE
 BUT SSH MAY FAIL SINCE THIS IS ALL NETWORKING STUFF."
 echo " "
@@ -29,14 +29,21 @@ echo "Uptading and upgrading your system..."
 echo "#####################################"
 sudo apt update && sudo apt dist-upgrade -y
 
-# Install some dependencies 
+# Install some dependencies
 clear
 echo "###############################"
 echo "Installing some dependencies..."
 echo "###############################"
-sudo apt install isc-dhcp-server tor -y 
-sudo update-rc.d isc-dhcp-server enable
+sudo apt install isc-dhcp-server tor lighttpd php7.0-cgi dnsmasq vnstat -y
 sudo service isc-dhcp-server stop
+sudo lighttpd-enable-mod fastcgi-php
+sudo service lighttpd restart
+sudo rm -rf /var/www/html
+sudo git clone https://github.com/billz/raspap-webgui /var/www/html
+sudo chown -R www-data:www-data /var/www/html
+sudo mkdir /etc/raspap
+sudo mv /var/www/html/raspap.php /etc/raspap/
+sudo chown -R www-data:www-data /etc/raspap
 clear
 
 echo "Would you like to back up the following files?:"
@@ -57,7 +64,7 @@ read backup
 
 if [[ $backup == [yY]* ]];
 then
-        if [ ! -d ~/zeroPrIvacy/backup ];
+        if [ ! -d /home/pi/zeroPrIvacy/backup ];
         then
                 sudo mkdir /home/pi/zeroPrIvacy/backup
         fi
@@ -70,7 +77,7 @@ then
         sudo cp /etc/wpa_supplicant/wpa_supplicant.conf /home/pi/zeroPrIvacy/backup/wpa_supplicant.conf.bak
         sudo cp /etc/dhcp/dhcpd.conf /home/pi/zeroPrIvacy/backup/dhcpd.conf.bak
         sudo cp /etc/sysctl.conf /home/pi/zeroPrIvacy/backup/sysctl.conf.bak
-	sudo cp /etc/tor/torrc /home/pi/zeroPrIvacy/backup/torrc.bak
+        sudo cp /etc/tor/torrc /home/pi/zeroPrIvacy/backup/torrc.bak
 fi
 
 # Start Copying over files to where they need to go
@@ -84,6 +91,8 @@ sudo cp /home/pi/zeroPrIvacy/config_files/torrc  /etc/tor/torrc
 sudo cp /home/pi/zeroPrIvacy/config_files/interfaces /etc/network/interfaces
 sudo cp /home/pi/zeroPrIvacy/config_files/isc-dhcp-server /etc/default/isc-dhcp-server
 sudo cp /home/pi/zeroPrIvacy/config_files/sysctl.conf /etc/sysctl.conf
+sudo cp /home/pi/zeroPrIvacy/config_files/sudoers /etc/sudoers
+sudo chmod 700 /etc/sudoers
 echo "Is your wifi successfully connected to an access point?"
 read wifi
 if [[ $wifi == [nN]* ]];
