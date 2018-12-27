@@ -27,7 +27,7 @@ echo "
 #####################################"
 echo "Uptading and upgrading your system..."
 echo "#####################################"
-#sudo apt update && sudo apt dist-upgrade -y
+sudo apt update && sudo apt dist-upgrade -y
 
 # Install some dependencies 
 clear
@@ -35,6 +35,7 @@ echo "###############################"
 echo "Installing some dependencies..."
 echo "###############################"
 sudo apt install isc-dhcp-server tor -y 
+sudo update-rc.d isc-dhcp-server enable
 sudo service isc-dhcp-server stop
 clear
 
