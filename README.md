@@ -10,15 +10,16 @@ Of course this does use the onboard adapter that the raspberry pi zero w has (th
 2) Download the latest version of raspian-lite from https://www.raspberrypi.org/downloads/raspbian/. Use something such as etcher to flash the raspbian ISO to the micro SD card. (Used Raspbian Lite cause i dont need local GUI except for whatever online UI )
 	
 3) For this project, I started out using an FTDI breakout board to do serial to the pi using PUTTY. If you do not have this capability to run serial to the pi through some other serial connector there are some other ways for enabling serial however, the one at this link https://learn.adafruit.com/turning-your-raspberry-pi-zero-into-a-usb-gadget/serial-gadget, could possibly interfere with the usb connection.
-We will need to enable uart to use serial at boot. So, before even ejecting the sd card, go ahead and do this step and setp 4 and save. 
-(Keep in mind, I am doing this all in windows and of course on the pi, Linux)
+We will need to enable uart to use serial at boot. So, before even ejecting the sd card, go ahead and do this step and setp 4 and save. A more indepth guide on this can be found here: https://learn.adafruit.com/turning-your-raspberry-pi-zero-into-a-usb-gadget/ethernet-gadget (Keep in mind, I am doing this all in windows and of course on the pi, Linux).
 In config.txt at the bottom, add the following lines:
+```
 enable_uart=1 
 dtoverlay=dwc2 
-	
+```
 4) Save and exit config.txt, then open the cmdline.txt and type in the following code between the last 'rootwait' and the last 'quiet':
+```
 modules-load=dwc2,g_ether
-
+```
 ** This enables the devices as an ethernet gadget **
 ***I have tried the route to enable ssh from adding in a file within the "boot" partition of the sd card however, I seemed to have issues with it so I chose 
 to go this route and enable it later***
