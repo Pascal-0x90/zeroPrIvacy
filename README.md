@@ -35,7 +35,7 @@ to go this route and enable it later***
 	
 7) Select the serial radial button and put in the proper COM port, Mine is COM3 as per my device manager states (Right click bottom left corner of screen > Device manager > expand the menu for COM ports to see proper COM device.)
 	
-8) Baudrate for most raspberry pi devices in the family run at a baudrate/speed of 115200, so change that otherwise the connection will be too fast for the computer to sense it and you will just see garbage
+8) Baudrate for most raspberry pi devices in the family run at a baudrate/speed of 115200, so change that otherwise the connection will be too fast (or too slow) for the computer to sense it and you will just see garbage
 	
 9) Most noteably here is this is a live transfer of data, so the connection may be a little touchy at times depending on your cable, make sure you are connecting with a good enough serial connection
 	
