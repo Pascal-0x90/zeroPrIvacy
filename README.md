@@ -5,11 +5,11 @@ Despite the name, the project was created to allow a user to, once fully install
 ## How does the device work?
 Of course this does use the onboard adapter that the raspberry pi zero w has (thus the w), and the usb connection either through some cable plugged into the usb micro usb connector or through some soldered/connected USB-A Male connector. The USB connection becomes an emulated RNDIS connector when plugged into a computer (Whether Linux or Windows, have not been able to test MacOS) which is a fancy way to say USB Ethernet which will use its onboard DHCP server to give the computer an ip and allow it to communicate with the pi. Then, the user can connect to an access point using the pi by using the online php api (from the RaspAP Project https://github.com/billz/raspap-webgui but I slightly modified on install).
 ## How to install
-1) Format sd card with SD Card Formatter utility
+1) Format sd card with SD Card Formatter utility https://www.sdcard.org/downloads/formatter_4/
 
-2) Download the latest version of raspian-lite from https://www.raspberrypi.org/downloads/raspbian/. Use something such as etcher to flash the raspbian ISO to the micro SD card. (Used Raspbian Lite cause i dont need local GUI except for whatever online UI )
+2) Download the latest version of raspian-lite from https://www.raspberrypi.org/downloads/raspbian/. Use something such as etcher to flash the raspbian ISO to the micro SD card https://www.balena.io/etcher/ . (Used Raspbian Lite cause i dont need local GUI except for whatever online UI )
 	
-3) For this project, I started out using an FTDI breakout board to do serial to the pi using PUTTY. If you do not have this capability to run serial to the pi through some other serial connector there are some other ways for enabling serial however, the one at this link https://learn.adafruit.com/turning-your-raspberry-pi-zero-into-a-usb-gadget/serial-gadget, could possibly interfere with the usb connection.
+3) For this project, I started out using an FTDI breakout board ( This is the one I used https://www.osepp.com/electronic-modules/breakout-boards/96-osepp-ftdi-breakout-board) to do serial to the pi using PUTTY ( https://www.putty.org/ ). If you do not have this capability to run serial to the pi through some other serial connector there are some other ways for enabling serial however, the one at this link https://learn.adafruit.com/turning-your-raspberry-pi-zero-into-a-usb-gadget/serial-gadget, could possibly interfere with the usb connection.
 We will need to enable uart to use serial at boot. So, before even ejecting the sd card, go ahead and do this step and setp 4 and save. A more indepth guide on this can be found here: https://learn.adafruit.com/turning-your-raspberry-pi-zero-into-a-usb-gadget/ethernet-gadget (Keep in mind, I am doing this all in windows and of course on the pi, Linux).
 In config.txt at the bottom, add the following lines:
 ```
@@ -25,7 +25,9 @@ modules-load=dwc2,g_ether
 to go this route and enable it later***
 	
 4) Using an FTDI breakout board, I attatched the txd of the bb (breakout board) to the rxd pin on the raspberry pi then rxd of bb to txd of raspberry pi and ground to ground on both. 
-	
+ - http://osepp.com/wp-content/uploads/2012/01/OSEPP_FTDI-Rev1.1-Schematic.pdf (FTDI Breakout Board Pinout/Schematic)
+ - https://pinout.xyz/# (Raspberry pi pinout.Between the Pi family, its pretty much all the same)
+
 5) The FTDI device shows as a console port on a windows laptop (with the proper device drivers installed) "COM3"
 	
 6) Upon it being recognized, I open up PUTTY which is a program used to offer a wide variety of network connections to different devices (telnet, ssh, serial)
